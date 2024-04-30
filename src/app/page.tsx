@@ -1,6 +1,7 @@
 'use client'
 import Image from "next/image";
-import { use, useEffect,useState } from "react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
 
@@ -12,9 +13,7 @@ export default function Home() {
       setUserList(data);
     }
 
-    // useEffect(() => {
-    //   fetchDate();
-    // }, [])
+   
 
     const handleClick = () =>{
       console.log("This is serveraction printed on server console")
@@ -36,12 +35,13 @@ export default function Home() {
         <tbody>
           {userList.map((user) => (
             <tr key={user.id}>
-              <td className="border border-gray-800 py-1 px-3">{user.id}</td>
+              <td className="border border-gray-800 py-1 px-3"><Link href={`posts/${user.id}`}>{user.id}</Link></td>
               <td className="border border-gray-800 py-1 px-3">{user.name}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      
     </div>
   );
 }
